@@ -8,3 +8,4 @@ This is Customized PySC2 environment with extra features listed in *Features*. T
 
 ### Non-sh entry points
 
+### make Simple64 default map
