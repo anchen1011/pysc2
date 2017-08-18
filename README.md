@@ -6,5 +6,6 @@ This is Customized PySC2 environment with extra features listed in *Features*. T
 
 ## Features
 
-### Non-sh entry points
+### Non-sh entrypoint (manual_set)
 
+### Set Simple64 as default map
