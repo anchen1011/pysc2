@@ -33,6 +33,12 @@ from pysc2.lib import app
 import gflags as flags
 
 
+identifier = False
+map_name = "Simple64"
+agent_moduble = "pysc2.agents.random_agent"
+agent_name = "RandomAgent"
+
+
 FLAGS = flags.FLAGS
 flags.DEFINE_bool("render", True, "Whether to render with pygame.")
 flags.DEFINE_integer("screen_resolution", 84,
@@ -57,8 +63,7 @@ flags.DEFINE_integer("parallel", 1, "How many instances to run in parallel.")
 
 flags.DEFINE_bool("save_replay", True, "Whether to save a replay at the end.")
 
-flags.DEFINE_string("map", None, "Name of a map to use.")
-flags.mark_flag_as_required("map")
+flags.DEFINE_string("map", "Simple64", "Name of a map to use.")
 
 
 def run_thread(agent_cls, map_name, visualize):
@@ -85,8 +90,12 @@ def main(unused_argv):
   stopwatch.sw.trace = FLAGS.trace
 
   maps.get(FLAGS.map)  # Assert the map exists.
+  global identifier, map_name, agent_module, agent_name
 
-  agent_module, agent_name = FLAGS.agent.rsplit(".", 1)
+  if identifier == False:
+    map_name = FLAGS.map
+    agent_module, agent_name = FLAGS.agent.rsplit(".", 1)
+  
   agent_cls = getattr(importlib.import_module(agent_module), agent_name)
 
   threads = []
@@ -95,7 +104,7 @@ def main(unused_argv):
     threads.append(t)
     t.start()
 
-  run_thread(agent_cls, FLAGS.map, FLAGS.render)
+  run_thread(agent_cls, map_name, FLAGS.render)
 
   for t in threads:
     t.join()
@@ -103,6 +112,14 @@ def main(unused_argv):
   if FLAGS.profile:
     print(stopwatch.sw)
 
+
+def manual_set(mn='Simple64', am='agents.naive_agent', an='TestAgent'):
+  global identifier, map_name, agent_module, agent_name
+  identifier = True
+  map_name = mn
+  agent_module = am
+  agent_name = an
+  
 
 def entry_point():  # Needed so setup.py scripts work.
   app.run(main)
