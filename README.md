@@ -2,7 +2,7 @@
 Customized PySC2 - StarCraft II Learning Environment
 
 ## about
-This is Customized PySC2 environment with extra features listed in *Features*. 
+This is Customized PySC2 environment with extra features listed in **Features**. 
 
 The original README.md could be found in doc/README.md.
 
