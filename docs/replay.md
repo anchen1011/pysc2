@@ -16,7 +16,7 @@ match in our observations, though they should be fairly similar.
 
 Replays are version dependent, so a 3.15 replay will fail in a 3.16 binary.
 
-You can visualize the replays with the full game, by putting SC2Replay file into [SC2Root]/Replays (e.g. C:\Program Files (x86)\StarCraft II\Replays), calling `pysc2.bin.replay_info` path/to/replay/file, and putting the corresponding SC2Map under [SC2Root]/Maps/location/suggested/by/replay/info (e.g. C:\Program Files (x86)\StartCraft II\Maps\mini_games\*.SC2Map).
+You can visualize the replays with the full game, by putting SC2Replay file into [SC2Root]/Replays (e.g. C:\Program Files (x86)\StarCraft II\Replays), calling `pysc2.bin.replay_info` path/to/replay/file, and putting the corresponding SC2Map under [SC2Root]/Maps/location/suggested/by/replay/info (e.g. C:\Program Files (x86)\StartCraft II\Maps\mini\_games\*.SC2Map).
 
 Or, with `pysc2.bin.play` to replay under abstraction.
 
