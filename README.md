@@ -12,3 +12,5 @@ This is Customized PySC2 environment with extra features listed in *Features*. T
 
 ### Add actions list
 See doc/actions.txt
+
+### Add Full Game Replay instruction under doc
