@@ -1,16 +1,16 @@
-# Customized PySC2 - StarCraft II Learning Environment
+# pysc2
+Customized PySC2 - StarCraft II Learning Environment
 
-## About
-
+## about
 This is Customized PySC2 environment with extra features listed in *Features*. The original README.MD could be found in doc/README.MD.
 
-## Features
+## features
 
-### Non-sh entrypoint (manual)
+### non-sh entrypoint (manual)
 
-### Set Simple64 as default map
+### set Simple64 as default map
 
-### Add actions list
+### add actions list
 See doc/actions.txt
 
-### Add Full Game Replay instruction under doc
+### add Full Game Replay instruction under doc
