@@ -32,11 +32,13 @@ import gflags as flags
 from s2clientprotocol import sc2api_pb2 as sc_pb
 
 
-flags.DEFINE_integer("sc2_verbose", 0,
-                     ("Print the communication packets with SC2. 0 disables. "
-                      "-1 means all. >0 will print that many lines per "
-                      "packet. 20 is a good starting value."))
-FLAGS = flags.FLAGS
+# flags.DEFINE_integer("sc2_verbose", 0,
+#                      ("Print the communication packets with SC2. 0 disables. "
+#                       "-1 means all. >0 will print that many lines per "
+#                       "packet. 20 is a good starting value."))
+# FLAGS = flags.FLAGS
+
+sc2_verbose = 0
 
 
 sw = stopwatch.sw
@@ -80,11 +82,11 @@ class StarcraftProtocol(object):
   @sw.decorate
   def read(self):
     """Read a Response, do some validation, and return it."""
-    if FLAGS.sc2_verbose:
+    if sc2_verbose:
       self._log(" Reading response ".center(60, "-"))
       start = time.time()
     response = self._read()
-    if FLAGS.sc2_verbose:
+    if sc2_verbose:
       self._log(" %0.1f msec\n" % (1000 * (time.time() - start)))
       self._log_packet(response)
     if not response.HasField("status"):
@@ -102,7 +104,7 @@ class StarcraftProtocol(object):
   @sw.decorate
   def write(self, request):
     """Write a Request."""
-    if FLAGS.sc2_verbose:
+    if sc2_verbose:
       self._log(" Writing request ".center(60, "-") + "\n")
       self._log_packet(request)
     self._write(request)
@@ -128,7 +130,7 @@ class StarcraftProtocol(object):
     return getattr(res, list(kwargs.keys())[0])
 
   def _log_packet(self, packet):
-    max_lines = FLAGS.sc2_verbose
+    max_lines = sc2_verbose
     if max_lines > 0:
       max_width = int(os.getenv("COLUMNS", 200))  # Get your TTY width.
       lines = str(packet).strip().split("\n")

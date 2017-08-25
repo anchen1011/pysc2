@@ -22,3 +22,6 @@ Read doc/README.md first is highly recommended.
 See doc/actions.txt
 
 ### add Full Game Replay instruction under doc
+
+### fix sc2\_verbose incompatibility
+pysc2/lib/protocol.py
